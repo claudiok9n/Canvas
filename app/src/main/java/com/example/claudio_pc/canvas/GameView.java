@@ -17,7 +17,7 @@ public class GameView extends SurfaceView {
     private Nave nave;
     private Sprite sprite;
     private Invaders invaders;
-    private int[][] mapInv;
+    public int[][] mapInv;
 
     public GameView(Context context) {
         super(context);
@@ -43,9 +43,10 @@ public class GameView extends SurfaceView {
                 gameLoopThread.setRunning(true);
                 gameLoopThread.start();
 
+                mapInv = new int[4][10];
                 for(int f=0; f<4; f++){
                     for(int c=0; c<10; c++){
-                        //mapInv[f][c] = 1;
+                        mapInv[f][c] = 1;
                     }
                 }
             }
@@ -58,7 +59,7 @@ public class GameView extends SurfaceView {
 
         nave = new Nave(this, getBitmap(R.mipmap.nave));
         invaders = new Invaders(this, getBitmap(R.mipmap.inv));
-        sprite = new Sprite(this, getBitmap(R.mipmap.inv));
+        //sprite = new Sprite(this, getBitmap(R.mipmap.inv));
     }
 
         private Bitmap getBitmap(int IdResource){
@@ -81,7 +82,7 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.BLACK);
         nave.onDraw(canvas);
         invaders.onDraw(canvas);
-        sprite.onDraw(canvas);
+        //sprite.onDraw(canvas);
     }
 
 }

@@ -46,10 +46,21 @@ public class Invaders {
 
     public void onDraw(Canvas canvas) {
         update();
-        int srcX = currentFrame * width;
-        int srcY = 1 * height;
-        Rect src = new Rect(srcX, srcY, srcX + width, srcY + height);
-        Rect dst = new Rect(x, y, x + width, y + height);
-        canvas.drawBitmap(img, src, dst, null);
+
+        for(int f=0; f<4; f++){
+            for(int c=0; c<10; c++){
+                int inv = gameView.mapInv[f][c];
+                if(inv != 0){
+                    x = c * 15 + 25;
+                    y = f * 15 + 25;
+                    int srcX = currentFrame * width;
+                    int srcY = 1 * height;
+                    Rect src = new Rect(srcX, srcY, srcX + width, srcY + height);
+                    Rect dst = new Rect(x, y, x + width, y + height);
+                    canvas.drawBitmap(img, src, dst, null);
+                }
+            }
+        }
+
     }
 }
